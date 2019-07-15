@@ -1,7 +1,7 @@
 # class Vertex():
 #     def __init__():
 #         self.name = name
-        # self.neighbors = []
+#         self.neighbors = []
 
 class Graph():
     def __init__(self, graph_file):
