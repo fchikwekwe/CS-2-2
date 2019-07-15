@@ -24,12 +24,32 @@ class Graph():
             return edges
 
     def edge_list(self):
-        edges = 0
+        edges = []
         with open(self.file, 'r') as file:
             for line in file.readlines():
                 if line[0] == '(' and len(line) >= 5:
-                    edges += 1
-            return edges
+                    edges.append((line.strip('\n')))
+        return edges
+        # return self.clean_edges(edges)
+
+    def clean_edges(self, edges):
+        for edge in edges:
+            new_edge = []
+            num = ''
+            index = 0
+
+            for char in edge:
+                if char.isdigit():
+                    num += char
+                    index += 1
+                else: 
+                    if num: 
+                        print()
+                        new_edge.append(int(num))
+                        num = ''
+                        edge = new_edge
+                    index += 1
+        return edges
 
 def main():
     import sys 
@@ -44,5 +64,6 @@ def main():
     else: 
         print("Please provide a text file at the command line.\n")
         print("Example: python3 challenge_1.py graph_data.txt")
+
 if __name__ == "__main__":
     main()
